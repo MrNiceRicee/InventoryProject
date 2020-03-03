@@ -29,6 +29,8 @@ namespace InventoryProject.Forms
             StoreLibrary.Sort((a, b) => b.Name.CompareTo(a.Name));      //sort alphabetically
             MostPopularPanelFill(this.MostPopularPanel, StoreLibrary);  //fill in most popular tab
             MostRatedPanelFill(this.MostLikedPanel, StoreLibrary);      //fill in most rated tab
+
+            
         }
 
         public WelcomePage(Form parent)
@@ -201,20 +203,41 @@ namespace InventoryProject.Forms
 
         }
 
+        
+        private void MakeCart(Form parent, User user, List<Game> cart)
+        {
+            GameCart checkout = new GameCart();
+            checkout.setItems(cart,user);
+
+        }
+
 
 
         //Listeners
+
+                    //someone clicked the cart
+        private void CartClick_Click(object sender, EventArgs e)
+        {
+            if (sender is PictureBox)
+            {
+                PictureBox suspect = (PictureBox)sender;
+
+
+            }
+            else if (sender is Label)
+            {
+                Label suspect = (Label)sender;
+
+            }
+        }
+
+
 
         private void UpdateSystem(object sender, MouseEventArgs e)
         {
 
         }
 
-
-        private void SelectedGame(Game freshgame)
-        {
-
-        }
 
         private void Label_MouseHover(object sender, EventArgs e)
         {
@@ -256,6 +279,8 @@ namespace InventoryProject.Forms
             Console.WriteLine("Double Click Store");
 
         }
+
+
 
 
         private void CustomItem_DoubleClick(object sender, EventArgs e)
