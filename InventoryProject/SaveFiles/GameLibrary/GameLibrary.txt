@@ -1,0 +1,20 @@
+One Theft/,/Dark Go/,/Action/,/40.99/,/5/19/2011 12:00:00 AM/,/59/,/141412
+One Bros/,/Dark Go/,/Simulator/,/60.99/,/10/8/2002 12:00:00 AM/,/8/,/5389
+Queen Horizon/,/Black Studio/,/Simulator/,/50.99/,/11/15/2004 12:00:00 AM/,/45/,/446028
+Space Command/,/Unreal Final/,/Puzzle/,/30.99/,/8/8/2009 12:00:00 AM/,/99/,/715742
+Space Hazards/,/Unreal Games/,/Adventure/,/50.99/,/7/1/2000 12:00:00 AM/,/93/,/173325
+Duex Crowd/,/Red Go/,/Adventure/,/70.99/,/11/14/2013 12:00:00 AM/,/98/,/328413
+Duke Clutch/,/Dark Reality/,/Action/,/50.99/,/4/8/2005 12:00:00 AM/,/63/,/528561
+Queen AntiHero/,/Level Up Studio/,/MMORPG/,/70.99/,/7/2/2008 12:00:00 AM/,/54/,/192254
+One Origins/,/Red Go/,/FPS/,/70.99/,/7/11/2018 12:00:00 AM/,/12/,/55646
+First Horizon/,/Level Up Games/,/Adventure/,/70.99/,/8/16/2000 12:00:00 AM/,/80/,/164307
+Arena Crowd/,/Bloody Gaming/,/Simulator/,/60.99/,/1/14/2012 12:00:00 AM/,/75/,/419195
+Gauntlet AntiHero/,/Red Final/,/Action/,/40.99/,/9/17/2013 12:00:00 AM/,/98/,/857270
+Legend of Bros/,/Red Go/,/MMORPG/,/20.99/,/9/17/2008 12:00:00 AM/,/83/,/524493
+Second Break/,/Hello Studio/,/FPS/,/40.99/,/10/21/2018 12:00:00 AM/,/96/,/957631
+QWERTY Invaders/,/Unreal Go/,/FPS/,/70.99/,/8/14/2003 12:00:00 AM/,/93/,/465938
+Legend of Crowd/,/Hello World/,/Adventure/,/20.99/,/7/5/2004 12:00:00 AM/,/48/,/276060
+King Bros/,/Epic Studio/,/RPG/,/70.99/,/11/5/2018 12:00:00 AM/,/99/,/791899
+Second Villian/,/Bloody Go/,/Puzzle/,/40.99/,/6/10/2010 12:00:00 AM/,/10/,/70714
+Space Invaders/,/Epic Go/,/Puzzle/,/60.99/,/2/1/2014 12:00:00 AM/,/62/,/189402
+Grand Crowd/,/Red Go/,/Puzzle/,/50.99/,/9/22/2010 12:00:00 AM/,/22/,/178671
