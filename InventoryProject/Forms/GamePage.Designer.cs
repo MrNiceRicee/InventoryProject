@@ -57,7 +57,7 @@
             this.GamePictureBox.AccessibleName = "GamePictureBox";
             this.GamePictureBox.BackColor = System.Drawing.Color.Gray;
             this.GamePictureBox.Location = new System.Drawing.Point(36, 47);
-            this.GamePictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GamePictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.GamePictureBox.Name = "GamePictureBox";
             this.GamePictureBox.Size = new System.Drawing.Size(225, 234);
             this.GamePictureBox.TabIndex = 6;
@@ -125,12 +125,13 @@
             this.GameBuyButton.FlatAppearance.BorderSize = 0;
             this.GameBuyButton.ForeColor = System.Drawing.Color.White;
             this.GameBuyButton.Location = new System.Drawing.Point(669, 371);
-            this.GameBuyButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GameBuyButton.Margin = new System.Windows.Forms.Padding(2);
             this.GameBuyButton.Name = "GameBuyButton";
             this.GameBuyButton.Size = new System.Drawing.Size(76, 44);
             this.GameBuyButton.TabIndex = 12;
             this.GameBuyButton.Text = "Add to Cart";
             this.GameBuyButton.UseVisualStyleBackColor = false;
+            this.GameBuyButton.Click += new System.EventHandler(this.CustomItem_MouseClick);
             // 
             // GameDescriptionBox
             // 
@@ -140,6 +141,7 @@
             this.GameDescriptionBox.FormattingEnabled = true;
             this.GameDescriptionBox.Location = new System.Drawing.Point(319, 131);
             this.GameDescriptionBox.Name = "GameDescriptionBox";
+            this.GameDescriptionBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.GameDescriptionBox.Size = new System.Drawing.Size(426, 186);
             this.GameDescriptionBox.TabIndex = 13;
             // 
@@ -157,7 +159,7 @@
             this.Controls.Add(this.GameRatingLabel);
             this.Controls.Add(this.GamePictureBox);
             this.Controls.Add(this.GameTitleLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GamePage";
             this.Text = "GamePage";
             ((System.ComponentModel.ISupportInitialize)(this.GamePictureBox)).EndInit();

@@ -15,28 +15,29 @@ namespace InventoryProject.Forms
     public partial class GamePage : Form
     {
         Game RegisteredGame;
+        User LoggeedUser;
+        Form parentForm;
         RandomizeGame RG = new RandomizeGame();
+        FileAccessModule FAM = new FileAccessModule();
 
-        public GamePage()
+        internal GamePage(Game freshgame, User logged, Form ParentForm)
         {
-            InitializeComponent();            
+            InitializeComponent();
+            RegisteredGame = freshgame;
+            LoggeedUser = logged;
+            parentForm = ParentForm;
+            initiateGamePage();
         }
         
-        internal void initiateGamePage(Game freshgame)
+        internal void initiateGamePage()
         {
-            RegisteredGame = freshgame;
-            /*            List<String> fromStory = new List<string>(RG.RandomStory());
-                        for (int i = 0; i < fromStory.Count; i++)
-                        {
-                            this.GameDescriptionBox.Items.Add(fromStory[i]);
-                        }*/
-
             this.GameDescriptionBox.DataSource = RG.RandomStory();
-            this.GameTitleLabel.Text = freshgame.Name;
-            this.GameStudioLabel.Text = freshgame.Studio;
-            this.GameRatingLabel.Text = freshgame.Ratings + "%";
-            this.GameGenreLabel.Text = freshgame.Genre;
-            this.GameDateLabel.Text = freshgame.DatePublished.ToString();
+            this.GameTitleLabel.Text = RegisteredGame.Name;
+            this.GameStudioLabel.Text = RegisteredGame.Studio;
+            this.GameRatingLabel.Text = RegisteredGame.Ratings + "%";
+            this.GameGenreLabel.Text = RegisteredGame.Genre;
+            this.GameDateLabel.Text = RegisteredGame.DatePublished.ToString();
+            //Hello there!
         }
 
         private void CustomItem_Hover(object sender, EventArgs e)
@@ -81,9 +82,26 @@ namespace InventoryProject.Forms
             if (sender is Button)
             {
                 Button suspect = (Button)sender;
-                if (suspect.Name.Equals(this.GameBuyButton))
+                if (suspect.Name.Equals(this.GameBuyButton.Name))
                 {
                     Console.WriteLine("Add to Cart");
+                    if (parentForm is WelcomePage)
+                    {
+                        WelcomePage ChangeForm = (WelcomePage)parentForm;
+                        if (!ChangeForm.InCart.Contains(RegisteredGame))
+                        {
+                            ChangeForm.InCart.Add(RegisteredGame);
+                            ChangeForm.updateCart();
+                        }
+                    }else if (parentForm is UserProfile)
+                    {
+                        UserProfile ChangeForm = (UserProfile)parentForm;
+                        if (!ChangeForm.checkCart(RegisteredGame))
+                        {
+                            ChangeForm.addCart(RegisteredGame);
+                            ChangeForm.updateCart();
+                        }
+                    }
                 }
             }
         }

@@ -18,6 +18,7 @@ namespace InventoryProject.Forms
         internal User LoggedIn;
         FileAccessModule FAM = new FileAccessModule();
         List<Game> StoreLibrary = new List<Game>();
+        internal List<Game> InCart = new List<Game>();
         Boolean CloseUp = true;
 
 
@@ -35,8 +36,16 @@ namespace InventoryProject.Forms
             InitializeComponent();
             mainform = parent;
             initiatePage();
-            this.UserProfileLabel.Text = "Profile";
+            this.UserProfileLabel.Text = "Profile";           
             this.FormClosed += our_FormClosed;
+
+            updateCart();
+        }
+
+        public void updateCart()
+        {
+            this.InCartLabel.Text = "(" + InCart.Count + ") Cart";
+
         }
 
         private void our_FormClosed(object sender, FormClosedEventArgs e)
@@ -227,7 +236,7 @@ namespace InventoryProject.Forms
         private void UserProfileLabel_DoubleClick(object sender, EventArgs e)
         {
             //Lets go to profile page
-            UserProfile userProfile = new UserProfile(this);
+            UserProfile userProfile = new UserProfile(this,InCart);
             userProfile.setLoggedIn(LoggedIn);
 
             //Make sure the location is the same place
@@ -260,8 +269,7 @@ namespace InventoryProject.Forms
                     //USER HAS CLICKED ON A GAME PANEL
                     //we Go in the game library
                     Console.WriteLine(StoreLibrary[x].myInfo());
-                    GamePage newPage = new GamePage();
-                    newPage.initiateGamePage(StoreLibrary[x]);
+                    GamePage newPage = new GamePage(StoreLibrary[x], LoggedIn,this);
 
                     newPage.Show();
                 }

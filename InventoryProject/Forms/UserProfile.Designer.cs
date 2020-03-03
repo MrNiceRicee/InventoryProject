@@ -33,15 +33,17 @@
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.UserFunds = new System.Windows.Forms.Label();
             this.BackButtonLabel = new System.Windows.Forms.Label();
+            this.InCartLabel = new System.Windows.Forms.Label();
+            this.CartPicture = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.CartPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // PersonalGamesPanel
             // 
             this.PersonalGamesPanel.AccessibleName = "PersonalGamesPanel";
-            this.PersonalGamesPanel.Location = new System.Drawing.Point(84, 162);
-            this.PersonalGamesPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.PersonalGamesPanel.Location = new System.Drawing.Point(42, 84);
             this.PersonalGamesPanel.Name = "PersonalGamesPanel";
-            this.PersonalGamesPanel.Size = new System.Drawing.Size(850, 627);
+            this.PersonalGamesPanel.Size = new System.Drawing.Size(425, 326);
             this.PersonalGamesPanel.TabIndex = 0;
             // 
             // PersonalGamesLabel
@@ -50,10 +52,9 @@
             this.PersonalGamesLabel.AutoSize = true;
             this.PersonalGamesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PersonalGamesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.PersonalGamesLabel.Location = new System.Drawing.Point(74, 106);
-            this.PersonalGamesLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.PersonalGamesLabel.Location = new System.Drawing.Point(37, 55);
             this.PersonalGamesLabel.Name = "PersonalGamesLabel";
-            this.PersonalGamesLabel.Size = new System.Drawing.Size(154, 51);
+            this.PersonalGamesLabel.Size = new System.Drawing.Size(78, 26);
             this.PersonalGamesLabel.TabIndex = 1;
             this.PersonalGamesLabel.Text = "Library";
             // 
@@ -63,10 +64,9 @@
             this.WelcomeLabel.AutoSize = true;
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.WelcomeLabel.Location = new System.Drawing.Point(936, 106);
-            this.WelcomeLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.WelcomeLabel.Location = new System.Drawing.Point(468, 55);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(172, 51);
+            this.WelcomeLabel.Size = new System.Drawing.Size(89, 26);
             this.WelcomeLabel.TabIndex = 2;
             this.WelcomeLabel.Text = "Name_ ";
             // 
@@ -78,11 +78,10 @@
             this.UserFunds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UserFunds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserFunds.ForeColor = System.Drawing.Color.Silver;
-            this.UserFunds.Location = new System.Drawing.Point(1488, 17);
-            this.UserFunds.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.UserFunds.Location = new System.Drawing.Point(500, 10);
             this.UserFunds.Name = "UserFunds";
             this.UserFunds.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.UserFunds.Size = new System.Drawing.Size(82, 31);
+            this.UserFunds.Size = new System.Drawing.Size(44, 17);
             this.UserFunds.TabIndex = 11;
             this.UserFunds.Text = "$0.00";
             // 
@@ -92,30 +91,55 @@
             this.BackButtonLabel.AutoSize = true;
             this.BackButtonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButtonLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BackButtonLabel.Location = new System.Drawing.Point(24, 17);
-            this.BackButtonLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.BackButtonLabel.Location = new System.Drawing.Point(12, 9);
             this.BackButtonLabel.Name = "BackButtonLabel";
-            this.BackButtonLabel.Size = new System.Drawing.Size(102, 37);
+            this.BackButtonLabel.Size = new System.Drawing.Size(52, 20);
             this.BackButtonLabel.TabIndex = 12;
             this.BackButtonLabel.Text = "Home";
             this.BackButtonLabel.DoubleClick += new System.EventHandler(this.CustomItem_DoubleClick);
             this.BackButtonLabel.MouseLeave += new System.EventHandler(this.CustomItem_MouseLeave);
             this.BackButtonLabel.MouseHover += new System.EventHandler(this.CustomItem_Hover);
             // 
+            // InCartLabel
+            // 
+            this.InCartLabel.AccessibleName = "InCartLabel";
+            this.InCartLabel.AutoSize = true;
+            this.InCartLabel.BackColor = System.Drawing.Color.Transparent;
+            this.InCartLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InCartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InCartLabel.ForeColor = System.Drawing.Color.Silver;
+            this.InCartLabel.Location = new System.Drawing.Point(660, 10);
+            this.InCartLabel.Name = "InCartLabel";
+            this.InCartLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.InCartLabel.Size = new System.Drawing.Size(79, 17);
+            this.InCartLabel.TabIndex = 14;
+            this.InCartLabel.Text = "In Cart (10)";
+            // 
+            // CartPicture
+            // 
+            this.CartPicture.AccessibleName = "CartPicture";
+            this.CartPicture.Location = new System.Drawing.Point(600, 10);
+            this.CartPicture.Name = "CartPicture";
+            this.CartPicture.Size = new System.Drawing.Size(53, 50);
+            this.CartPicture.TabIndex = 13;
+            this.CartPicture.TabStop = false;
+            // 
             // UserProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(29)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1624, 879);
+            this.ClientSize = new System.Drawing.Size(812, 457);
+            this.Controls.Add(this.InCartLabel);
+            this.Controls.Add(this.CartPicture);
             this.Controls.Add(this.BackButtonLabel);
             this.Controls.Add(this.UserFunds);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.PersonalGamesLabel);
             this.Controls.Add(this.PersonalGamesPanel);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "UserProfile";
             this.Text = "UserProfile";
+            ((System.ComponentModel.ISupportInitialize)(this.CartPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +152,7 @@
         private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Label UserFunds;
         private System.Windows.Forms.Label BackButtonLabel;
+        private System.Windows.Forms.Label InCartLabel;
+        private System.Windows.Forms.PictureBox CartPicture;
     }
 }

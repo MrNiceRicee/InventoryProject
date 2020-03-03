@@ -21,7 +21,6 @@ namespace InventoryProject
     public partial class LoginPage : Form
     {
         User loggedIn;
-        MainClass MainMain = new MainClass();
         WelcomePage Welcomepage;
         Boolean CloseUp = true;
 
@@ -68,7 +67,6 @@ namespace InventoryProject
                 this.LogInWarning.Visible = false;
                 Console.WriteLine();
                 loggedIn = FAM.readUserFile(FAM.FindUserLocation(username) + "\\User.txt");
-                MainMain.setLoggedUser(loggedIn);
 
                 Welcomepage = new WelcomePage(this);
                 Welcomepage.StartPosition = FormStartPosition.Manual;

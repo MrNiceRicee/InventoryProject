@@ -19,6 +19,7 @@ namespace InventoryProject.Forms
         Form parentForm;
         FileAccessModule FAM = new FileAccessModule();
         List<Game> PersonalLibrary;
+        List<Game> InCart;
         Boolean CloseUp = true;
 
         private void initiatePage()
@@ -27,7 +28,7 @@ namespace InventoryProject.Forms
             GamePanels(this.PersonalGamesPanel,PersonalLibrary);
         }
 
-        internal void setLoggedIn(User logged)
+        internal void setLoggedIn(User logged )
         {
             LoggedIn = logged;
             //FAM.FromGameFile(FAM.FindUserLocation(LoggedIn.UserName) + "\\uGameLibrary.txt", LoggedIn.gameLibrary);
@@ -39,15 +40,29 @@ namespace InventoryProject.Forms
             initiatePage();
         }
 
-        public UserProfile(Form parent)
+        internal void addCart(Game game)
+        {
+            InCart.Add(game);
+        }
+
+        internal Boolean checkCart(Game game)
+        {
+            return (InCart.Contains(game));
+        }
+
+        internal UserProfile(Form parent, List <Game> inCart)
         {
             InitializeComponent();
             parentForm = parent;
-
-            
-
-
+            InCart = inCart;
             this.FormClosed += our_FormClosed;
+            updateCart();
+        }
+
+        public void updateCart()
+        {
+            this.InCartLabel.Text = "(" + InCart.Count + ") Cart";
+
         }
 
         private void our_FormClosed(object sender, FormClosedEventArgs e)
@@ -202,6 +217,9 @@ namespace InventoryProject.Forms
                 if (Int32.TryParse(suspect.Name, out int x))
                 {
                     Console.WriteLine(PersonalLibrary[x].myInfo());
+                    GamePage newPage = new GamePage(PersonalLibrary[x], LoggedIn,this);
+
+                    newPage.Show();
                 }
                 else
                 {

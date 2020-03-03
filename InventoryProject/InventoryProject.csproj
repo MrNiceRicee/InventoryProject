@@ -65,7 +65,7 @@
   <ItemGroup>
     <Compile Include="Classes\FileAccessModule.cs" />
     <Compile Include="Classes\Game.cs" />
-    <Compile Include="Classes\MainClass.cs" />
+    <Compile Include="Classes\StoreSystems.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Forms\GamePage.cs">
       <SubType>Form</SubType>
