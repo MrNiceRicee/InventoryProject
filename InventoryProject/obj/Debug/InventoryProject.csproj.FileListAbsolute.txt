@@ -24,3 +24,17 @@ E:\GCU\2020 Spring\Enterprise Applications Programming 1\Milestone2\InventoryPro
 D:\GCU\2020 Spring\Enterprise Applications Programming 1\Milestone2\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.UserProfile.resources
 D:\GCU\2020 Spring\Enterprise Applications Programming 1\Milestone2\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.GamePage.resources
 E:\GCU\2020 Spring\Enterprise Applications Programming 1\Milestone2\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.GamePage.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\bin\Debug\InventoryProject.exe.config
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\bin\Debug\InventoryProject.exe
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\bin\Debug\InventoryProject.pdb
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.csprojAssemblyReference.cache
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.GameCart.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.GamePage.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.LoginPage.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.RegisterPage.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.UserProfile.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.WelcomePage.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Properties.Resources.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.csproj.GenerateResource.cache
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.exe
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.pdb

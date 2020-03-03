@@ -208,6 +208,7 @@ namespace InventoryProject.Forms
 
 
         //Listeners
+                    //Listener for double clicking
         private void CustomItem_DoubleClick(object sender, EventArgs e)
         {
             if (sender is Panel)
@@ -216,8 +217,11 @@ namespace InventoryProject.Forms
                 Console.WriteLine(suspect.Name);
                 if (Int32.TryParse(suspect.Name, out int x))
                 {
+                    //It's a game label, since its a number
                     Console.WriteLine(PersonalLibrary[x].myInfo());
                     GamePage newPage = new GamePage(PersonalLibrary[x], LoggedIn,this);
+
+                    newPage.beOwned();      //game is owned by someone
 
                     newPage.Show();
                 }
@@ -249,8 +253,9 @@ namespace InventoryProject.Forms
                     this.UserFunds.Text = string.Format("{0:C}", (LoggedIn.Funds));
                     FAM.saveUser(LoggedIn);
                 }
-                else if (suspect.Name.Equals(this.BackButtonLabel.Name))
+                else if (suspect.Name.Equals(this.BackButtonLabel.Name))        
                 {
+                    //Go back to the previous page
                     parentForm.SetDesktopLocation(this.Location.X, this.Location.Y);
                     parentForm.Show();
                     CloseUp = false;
