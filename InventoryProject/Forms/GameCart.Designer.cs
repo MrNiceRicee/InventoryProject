@@ -86,6 +86,7 @@
             this.GameBuyButton.TabIndex = 13;
             this.GameBuyButton.Text = "Buy Games";
             this.GameBuyButton.UseVisualStyleBackColor = false;
+            this.GameBuyButton.Click += new System.EventHandler(this.CustomItem_MouseClick);
             // 
             // GameCart
             // 

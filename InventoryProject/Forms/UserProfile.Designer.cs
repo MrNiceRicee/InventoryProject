@@ -33,9 +33,6 @@
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.UserFunds = new System.Windows.Forms.Label();
             this.BackButtonLabel = new System.Windows.Forms.Label();
-            this.InCartLabel = new System.Windows.Forms.Label();
-            this.CartPicture = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.CartPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // PersonalGamesPanel
@@ -100,38 +97,12 @@
             this.BackButtonLabel.MouseLeave += new System.EventHandler(this.CustomItem_MouseLeave);
             this.BackButtonLabel.MouseHover += new System.EventHandler(this.CustomItem_Hover);
             // 
-            // InCartLabel
-            // 
-            this.InCartLabel.AccessibleName = "InCartLabel";
-            this.InCartLabel.AutoSize = true;
-            this.InCartLabel.BackColor = System.Drawing.Color.Transparent;
-            this.InCartLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InCartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InCartLabel.ForeColor = System.Drawing.Color.Silver;
-            this.InCartLabel.Location = new System.Drawing.Point(660, 10);
-            this.InCartLabel.Name = "InCartLabel";
-            this.InCartLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.InCartLabel.Size = new System.Drawing.Size(79, 17);
-            this.InCartLabel.TabIndex = 14;
-            this.InCartLabel.Text = "In Cart (10)";
-            // 
-            // CartPicture
-            // 
-            this.CartPicture.AccessibleName = "CartPicture";
-            this.CartPicture.Location = new System.Drawing.Point(600, 10);
-            this.CartPicture.Name = "CartPicture";
-            this.CartPicture.Size = new System.Drawing.Size(53, 50);
-            this.CartPicture.TabIndex = 13;
-            this.CartPicture.TabStop = false;
-            // 
             // UserProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(29)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(812, 457);
-            this.Controls.Add(this.InCartLabel);
-            this.Controls.Add(this.CartPicture);
             this.Controls.Add(this.BackButtonLabel);
             this.Controls.Add(this.UserFunds);
             this.Controls.Add(this.WelcomeLabel);
@@ -139,7 +110,6 @@
             this.Controls.Add(this.PersonalGamesPanel);
             this.Name = "UserProfile";
             this.Text = "UserProfile";
-            ((System.ComponentModel.ISupportInitialize)(this.CartPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,7 +122,5 @@
         private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Label UserFunds;
         private System.Windows.Forms.Label BackButtonLabel;
-        private System.Windows.Forms.Label InCartLabel;
-        private System.Windows.Forms.PictureBox CartPicture;
     }
 }

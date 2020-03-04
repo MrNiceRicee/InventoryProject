@@ -11,69 +11,28 @@ using System.Windows.Forms;
 
 namespace InventoryProject.Forms
 {
-    public partial class UserProfile : Form
+    public partial class GameCart : Form
     {
 
-        //Consistent Properties
-        private User LoggedIn;
-        Form parentForm;
-        FileAccessModule FAM = new FileAccessModule();
-        List<Game> PersonalLibrary;
-        List<Game> InCart;
-        Boolean CloseUp = true;
+        List<Game> checkout;
+        User loggedBuyer;
 
-        private void initiatePage()
-        {
-            //PersonalLibrary.Sort((a, b) => b.Name.CompareTo(a.Name));      //sort alphabetically
-            GamePanels(this.PersonalGamesPanel,PersonalLibrary);
-        }
-
-        internal void setLoggedIn(User logged )
-        {
-            LoggedIn = logged;
-            //FAM.FromGameFile(FAM.FindUserLocation(LoggedIn.UserName) + "\\uGameLibrary.txt", LoggedIn.gameLibrary);
-            this.WelcomeLabel.Text = "Welcome back, " + LoggedIn.IGName;
-            this.UserFunds.Text = string.Format("{0:C}", (LoggedIn.Funds));
-            this.UserFunds.DoubleClick += CustomItem_DoubleClick;
-
-            PersonalLibrary = new List<Game>(LoggedIn.gameLibrary);
-            initiatePage();
-        }
-
-        internal void addCart(Game game)
-        {
-            InCart.Add(game);
-        }
-
-        internal Boolean checkCart(Game game)
-        {
-            return (InCart.Contains(game));
-        }
-
-        internal UserProfile(Form parent, List <Game> inCart)
+        public GameCart()
         {
             InitializeComponent();
-            parentForm = parent;
-            InCart = inCart;
-            this.FormClosed += our_FormClosed;
-        }
+        }       
 
 
-        private void our_FormClosed(object sender, FormClosedEventArgs e)
+        internal void setItems(List<Game> InCartGames, User Buyer)
         {
-            if (CloseUp)
-            {
-                Environment.Exit(0);
-            }
+            checkout = InCartGames;
+            loggedBuyer = Buyer;
+            GamePanels(this.InCartPanel, checkout);
         }
 
 
 
-        //-------------------------------------------------------------------//
-        //UI generators
-
-
-        //For game profile
+        //Generate Panels
         private void GamePanels(Panel parentPanel, List<Game> gamelibrary)
         {
             //starting positions
@@ -84,11 +43,7 @@ namespace InventoryProject.Forms
             if (max > 10)
             {
                 max = 10;
-            }else if (max < 10)
-            {
-                Console.WriteLine(max);
             }
-            Console.WriteLine(max);
             //loop this thing
             for (int i = 0; i < max; i++)
             {
@@ -107,9 +62,8 @@ namespace InventoryProject.Forms
                 gameFrame.Location = new Point(0, (i * (panelheight + 2)));
                 gameFrame.Margin = new Padding(0);
                 gameFrame.Padding = new Padding(0);
-                gameFrame.Name = PersonalLibrary.FindIndex(a => a.saveInfo().Equals(gamelibrary[i].saveInfo())).ToString();
+                gameFrame.Name = i.ToString();
                 gameFrame.BackColor = Color.FromArgb(10, 18, 29);
-                gameFrame.DoubleClick += CustomItem_DoubleClick;
                 gameFrame.MouseHover += CustomItem_Hover;
                 gameFrame.MouseLeave += CustomItem_MouseLeave;
 
@@ -126,8 +80,8 @@ namespace InventoryProject.Forms
                 gameTitle.Location = new Point(gamePicture.Location.X + gamePicture.Width, 5);
                 gameTitle.ForeColor = Color.FromArgb(255, 255, 255);
                 gameTitle.BackColor = Color.FromArgb(0);
-                gameTitle.MouseHover += CustomItem_Hover;
-                gameTitle.MouseLeave += CustomItem_MouseLeave;
+                //gameTitle.MouseHover += Label_MouseHover;
+                //gameTitle.MouseLeave += Label_MouseLeave;
 
 
                 gameStudio.Text = gamelibrary[i].Studio;
@@ -139,8 +93,8 @@ namespace InventoryProject.Forms
                     (gameTitle.Location.Y + gameTitle.Size.Height));
                 gameStudio.ForeColor = Color.FromArgb(255, 255, 255);
                 gameStudio.BackColor = Color.FromArgb(0);
-                gameStudio.MouseHover += CustomItem_Hover;
-                gameStudio.MouseLeave += CustomItem_MouseLeave;
+                //gameStudio.MouseHover += Label_MouseHover;
+                //gameStudio.MouseLeave += Label_MouseLeave;
 
 
                 gameRating.Text = "rating: " + gamelibrary[i].Ratings + "%";
@@ -201,75 +155,27 @@ namespace InventoryProject.Forms
         }
 
 
-        //Listeners
-                    //Listener for double clicking
-        private void CustomItem_DoubleClick(object sender, EventArgs e)
-        {
-            if (sender is Panel)
-            {
-                Panel suspect = (Panel)sender;
-                Console.WriteLine(suspect.Name);
-                if (Int32.TryParse(suspect.Name, out int x))
-                {
-                    //It's a game label, since its a number
-                    Console.WriteLine(PersonalLibrary[x].myInfo());
-                    GamePage newPage = new GamePage(PersonalLibrary[x], LoggedIn,this);
-
-                    newPage.beOwned();      //game is owned by someone
-
-                    newPage.Show();
-                }
-                else
-                {
-                    Console.WriteLine("Other label");
-                }
-            }
-            else if (sender is Label)
-            {
-                Label suspect = (Label)sender;
-                if (suspect.Name.Equals(this.UserFunds.Name))
-                {
-                    //Going to add money
-                    string answer = Microsoft.VisualBasic.Interaction.InputBox("Enter how much money you would like to add",
-                       "Adding Funds",
-                       "Default",
-                       MousePosition.X,
-                       MousePosition.Y);
-                    double addedmoney=0;
-                    //hello there
-                    try {
-                        addedmoney = Math.Round(Convert.ToDouble(answer),2);
-                    }
-                    catch {
-                        Console.WriteLine("Some error");
-                    }
-                    LoggedIn.Funds += addedmoney;
-                    this.UserFunds.Text = string.Format("{0:C}", (LoggedIn.Funds));
-                    FAM.saveUser(LoggedIn);
-                }
-                else if (suspect.Name.Equals(this.BackButtonLabel.Name))        
-                {
-                    //Go back to the previous page
-                    parentForm.SetDesktopLocation(this.Location.X, this.Location.Y);
-                    parentForm.Show();
-                    CloseUp = false;
-                    this.Close();
-                }
-            }
-        }
-
 
         private void CustomItem_Hover(object sender, EventArgs e)
         {
             if (sender is Panel)
             {
                 Panel suspect = (Panel)sender;
-                suspect.BackColor = Color.FromArgb(80, 100, 120);
+                if (Int32.TryParse(suspect.Name, out int x))
+                {
+                    suspect.BackColor = Color.FromArgb(145, 26, 26);
+
+                }
+                else
+                {
+                    suspect.BackColor = Color.FromArgb(80, 100, 120);
+                }
             }
             else if (sender is Label)
             {
                 Label suspect = (Label)sender;
                 suspect.BackColor = Color.FromArgb(80, 100, 120);
+
             }
         }
 
@@ -279,13 +185,40 @@ namespace InventoryProject.Forms
             {
                 Panel suspect = (Panel)sender;
                 suspect.BackColor = Color.FromArgb(10, 18, 29);
+
             }
             else if (sender is Label)
             {
                 Label suspect = (Label)sender;
-                suspect.BackColor = Color.FromArgb(0);
+                suspect.BackColor = Color.FromArgb(10, 18, 29);
+
             }
         }
+
+        private void CustomItem_MouseClick(object sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                Button suspect = (Button)sender;
+                if (suspect.Name.Equals(this.GameBuyButton.Name))
+                {
+                    DialogResult result = MessageBox.Show("Do you wanna do something?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        Console.WriteLine("Yes");
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        Console.WriteLine("No");
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        Console.WriteLine("Cancelled");
+                    }
+                }
+            }
+        }
+
 
     }
 }

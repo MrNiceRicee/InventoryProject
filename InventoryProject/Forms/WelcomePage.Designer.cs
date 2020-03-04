@@ -190,6 +190,8 @@
             this.InCartLabel.Size = new System.Drawing.Size(79, 17);
             this.InCartLabel.TabIndex = 11;
             this.InCartLabel.Text = "In Cart (10)";
+            this.InCartLabel.Click += new System.EventHandler(this.CustomItem_DoubleClick);
+            this.InCartLabel.DoubleClick += new System.EventHandler(this.CustomItem_DoubleClick);
             // 
             // WelcomePage
             // 

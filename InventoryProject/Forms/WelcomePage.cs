@@ -204,11 +204,14 @@ namespace InventoryProject.Forms
         }
 
         
+        //Checkout Cart
         private void MakeCart(Form parent, User user, List<Game> cart)
         {
             GameCart checkout = new GameCart();
             checkout.setItems(cart,user);
 
+
+            checkout.Show();
         }
 
 
@@ -332,6 +335,9 @@ namespace InventoryProject.Forms
                     LoggedIn.Funds += addedmoney;
                     this.UserFunds.Text = string.Format("{0:C}", (LoggedIn.Funds));
                     FAM.saveUser(LoggedIn);
+                }else if (suspect.Name.Equals(this.InCartLabel.Name))
+                {
+                    MakeCart(this, LoggedIn, InCart);
                 }
             }
         }
