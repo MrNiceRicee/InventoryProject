@@ -158,6 +158,16 @@ namespace InventoryProject.Classes
                     Byte[] userinfo = new UTF8Encoding(true).GetBytes(newuser.SaveInfo());      //make the string to bytes
                     fs.Write(userinfo, 0, userinfo.Length);                                       //make the thing
                 }
+                using (System.IO.FileStream fs = File.Create(newUserLocation + "\\uGameLibrary.txt"))   //create the user txt initiate it
+                {
+                    String allgames = "";
+                    for (int i = 0; i < newuser.gameLibrary.Count; i++)
+                    {
+                        allgames += GameList[i].saveInfo() + "\n";
+                    }
+                    Byte[] gameinfo = new UTF8Encoding(true).GetBytes(allgames);      //make the string to bytes
+                    fs.Write(gameinfo, 0, gameinfo.Length);                                       //make the thing
+                }
             }
             else
             {

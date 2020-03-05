@@ -40,14 +40,14 @@ namespace InventoryProject.Forms
             initiatePage();
             this.UserProfileLabel.Text = "Profile";           
             this.FormClosed += our_FormClosed;
-
-            updateCart();
+            this.InCartLabel.Text = "(" + InCart.Count + ") Cart";
+            //updatePage();
         }
 
-        public void updateCart()
+        public void updatePage()
         {
             this.InCartLabel.Text = "(" + InCart.Count + ") Cart";
-
+            this.UserFunds.Text = string.Format("{0:C}", (LoggedIn.Funds));
         }
 
         private void our_FormClosed(object sender, FormClosedEventArgs e)
@@ -207,7 +207,7 @@ namespace InventoryProject.Forms
         //Checkout Cart
         private void MakeCart(Form parent, User user, List<Game> cart)
         {
-            GameCart checkout = new GameCart();
+            GameCart checkout = new GameCart(parent);
             checkout.setItems(cart,user);
 
 
@@ -296,10 +296,13 @@ namespace InventoryProject.Forms
                 {
                     //USER HAS CLICKED ON A GAME PANEL
                     //we Go in the game library
-                    Console.WriteLine(StoreLibrary[x].myInfo());
-                    GamePage newPage = new GamePage(StoreLibrary[x], LoggedIn,this);
-
-                    newPage.Show();
+                    //Console.WriteLine(StoreLibrary[x].myInfo());
+                    if (Application.OpenForms.OfType<GamePage>().Count() >= 1)
+                    {
+                        Application.OpenForms.OfType<GamePage>().First().Close();
+                    }
+                    GamePage gamePage = new GamePage(StoreLibrary[x], LoggedIn,this);
+                    gamePage.Show();
                 }
                 else
                 {
@@ -337,6 +340,10 @@ namespace InventoryProject.Forms
                     FAM.saveUser(LoggedIn);
                 }else if (suspect.Name.Equals(this.InCartLabel.Name))
                 {
+                    if (Application.OpenForms.OfType<GameCart>().Count() >= 1)
+                    {
+                        Application.OpenForms.OfType<GameCart>().First().Close();
+                    }
                     MakeCart(this, LoggedIn, InCart);
                 }
             }

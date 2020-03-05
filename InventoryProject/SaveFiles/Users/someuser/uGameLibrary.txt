@@ -1,3 +1,4 @@
 Arena Hazards/,/Bloody Games/,/Action/,/40.99/,/2/24/2009 12:00:00 AM/,/15/,/329290
 Duex Command/,/Bloody Gaming/,/Simulator/,/40.99/,/3/19/2001 12:00:00 AM/,/13/,/674305
 Zero Command/,/Hello Gaming/,/Puzzle/,/50.99/,/2/25/2011 12:00:00 AM/,/13/,/543513
+King Bros/,/Epic Studio/,/RPG/,/70.99/,/11/5/2018 12:00:00 AM/,/99/,/791899

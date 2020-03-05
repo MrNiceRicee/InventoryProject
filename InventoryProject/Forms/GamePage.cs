@@ -29,6 +29,12 @@ namespace InventoryProject.Forms
             RegisteredGame = freshgame;
             LoggedUser = logged;
             parentForm = ParentForm;
+            //if (LoggedUser.gameLibrary.Contains(freshgame))
+            if (LoggedUser.gameLibrary.Any(a => a.saveInfo().Equals(freshgame.saveInfo())))
+            {
+                Console.WriteLine("Owned Game!");
+                this.Owned = true;
+            }
             initiateGamePage();
         }
         
@@ -49,11 +55,11 @@ namespace InventoryProject.Forms
         }
 
             //Make the game be owned
-        internal void beOwned()
+/*        internal void beOwned()
         {
             Owned = true;
             initiateGamePage();
-        }
+        }*/
 
 
                             //Listeners
@@ -108,7 +114,7 @@ namespace InventoryProject.Forms
                         {
                             Console.WriteLine("Add to Cart");
                             ChangeForm.InCart.Add(RegisteredGame);
-                            ChangeForm.updateCart();
+                            ChangeForm.updatePage();
                         }
                     }else if (parentForm is UserProfile)
                     {

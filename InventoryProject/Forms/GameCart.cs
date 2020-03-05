@@ -16,10 +16,12 @@ namespace InventoryProject.Forms
 
         List<Game> checkout;
         User loggedBuyer;
+        Form parentForm;
 
-        public GameCart()
+        public GameCart(Form ParentForm)
         {
             InitializeComponent();
+            parentForm = ParentForm;
         }       
 
 
@@ -28,8 +30,17 @@ namespace InventoryProject.Forms
             checkout = InCartGames;
             loggedBuyer = Buyer;
             GamePanels(this.InCartPanel, checkout);
+            this.InCartLabel.Text = "Cart(" + checkout.Count + ")";
+            this.SubTotal.Text = string.Format("{0:C}", (checkout.Sum(a => a.Price)));
         }
 
+        private void updatePage()
+        {
+            this.InCartPanel.Controls.Clear();
+            GamePanels(this.InCartPanel, checkout);
+            this.InCartLabel.Text = "Cart(" + checkout.Count + ")";
+            this.SubTotal.Text = string.Format("{0:C}", (checkout.Sum(a => a.Price)));
+        }
 
 
         //Generate Panels
@@ -66,6 +77,7 @@ namespace InventoryProject.Forms
                 gameFrame.BackColor = Color.FromArgb(10, 18, 29);
                 gameFrame.MouseHover += CustomItem_Hover;
                 gameFrame.MouseLeave += CustomItem_MouseLeave;
+                gameFrame.MouseDoubleClick += CustomItem_MouseClick;
 
 
                 gamePicture.Size = new Size(gameFrame.Size.Height, gameFrame.Size.Height);        //makes it a box using the workframe width, this makes a box
@@ -206,6 +218,29 @@ namespace InventoryProject.Forms
                     if (result == DialogResult.Yes)
                     {
                         Console.WriteLine("Yes");
+
+                        //LINQ testing
+                        double total = checkout.Sum(a => a.Price);
+
+/*                        double total = 0;
+                        for (int i = 0; i < checkout.Count; i++)
+                        {
+                            total += checkout[i].Price;
+                        }*/
+                        if (loggedBuyer.Funds >= total)
+                        {
+                            loggedBuyer.Funds -= total;
+                            loggedBuyer.gameLibrary.AddRange(checkout);
+                            checkout.Clear();
+                            GamePanels(this.InCartPanel,checkout);
+                            FileAccessModule FAM = new FileAccessModule();
+                            FAM.saveUser(loggedBuyer);
+                            if (parentForm is WelcomePage)
+                            {
+                                WelcomePage parentalsuspect = (WelcomePage)parentForm;
+                                parentalsuspect.updatePage();
+                            }
+                        }
                     }
                     else if (result == DialogResult.No)
                     {
@@ -215,6 +250,15 @@ namespace InventoryProject.Forms
                     {
                         Console.WriteLine("Cancelled");
                     }
+                }
+            }
+            else if (sender is Panel)
+            {
+                Panel suspect = (Panel)sender;
+                if (Int32.TryParse(suspect.Name,out int x))
+                {
+                    checkout.Remove(checkout[x]);
+                    updatePage();
                 }
             }
         }

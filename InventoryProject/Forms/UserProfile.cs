@@ -212,10 +212,10 @@ namespace InventoryProject.Forms
                 if (Int32.TryParse(suspect.Name, out int x))
                 {
                     //It's a game label, since its a number
-                    Console.WriteLine(PersonalLibrary[x].myInfo());
+                    //Console.WriteLine(PersonalLibrary[x].myInfo());
                     GamePage newPage = new GamePage(PersonalLibrary[x], LoggedIn,this);
 
-                    newPage.beOwned();      //game is owned by someone
+                    //newPage.beOwned();      //game is owned by someone
 
                     newPage.Show();
                 }
