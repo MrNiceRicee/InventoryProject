@@ -167,6 +167,9 @@ namespace InventoryProject.Forms
             SearchIndex = SearchIndex.Select(s=>s.ToLower()).ToArray();
             List<Game> SearchLibrary = new List<Game>();
             List<Game> FinalSearchLibrary = new List<Game>();
+
+            //LINQ set ups for making seeing if the typed thing is a studio name or a game name
+
             var Namesearched = StoreLibrary.Where(p => p.Name.ToLower().Contains(SearchName.ToLower())).ToList();
             var Studiosearched = StoreLibrary.Where(p => p.Studio.ToLower().Contains(SearchName.ToLower())).ToList();
 
@@ -195,6 +198,73 @@ namespace InventoryProject.Forms
             var Genres = SearchLibrary.Where(p => SelectedGenre.Any(l => p.Genre == l));
 
             FinalSearchLibrary.AddRange(Genres);
+
+            //Determining the type of sort.
+            /*               
+                Alphabetical (A-Z)
+                Alphabetical (Z-A)
+                Price ($-$$$)
+                Price ($$$-$)
+                Publish Date (Old - New)
+                Publish Date (New - Old)
+                Most Liked
+                Least Liked
+                Most Popular
+                Least Popular
+             */
+            String SelectedSort = this.FilterBox.Text;       //Get the sort type
+            //Console.WriteLine("BrowseStore. Sort Type: " +SelectedSort );
+
+            if (SelectedSort.Equals("Alphabetical (A-Z)"))
+            {
+                //copy.Sort((a, b) => b.ItemSold.CompareTo(a.ItemSold));
+                //Console.WriteLine("BrowseStore. A-Z");
+                //LINQ to compare item a (first item) vs b (2nd item)
+                FinalSearchLibrary.Sort((a,b)=> a.Name.CompareTo(b.Name));
+            }
+            else if (SelectedSort.Equals("Alphabetical (Z-A)"))
+            {
+                //Console.WriteLine("BrowseStore. Z-A");
+                //Same as above explanation but reversed
+                FinalSearchLibrary.Sort((a, b) => b.Name.CompareTo(a.Name));
+
+            }
+            else if (SelectedSort.Equals("Price ($-$$$)"))
+            {
+                FinalSearchLibrary.Sort((a, b) => a.Price.CompareTo(b.Price));  
+
+            }
+            else if (SelectedSort.Equals("Price ($$$-$)"))
+            {
+                FinalSearchLibrary.Sort((a, b) => b.Price.CompareTo(a.Price));
+
+            }
+            else if (SelectedSort.Equals("Publish Date (Old - New)"))
+            {
+
+            }
+            else if (SelectedSort.Equals("Publish Date (New - Old)"))
+            {
+
+            }
+            else if (SelectedSort.Equals("Most Liked"))
+            {
+
+            }
+            else if (SelectedSort.Equals("Least Liked"))
+            {
+
+            }
+            else if (SelectedSort.Equals("Most Popular"))
+            {
+
+            }
+            else if (SelectedSort.Equals("Least Popular"))
+            {
+
+            }
+
+
             GamePanels(this.GameResultsPanel, FinalSearchLibrary);
         }
 

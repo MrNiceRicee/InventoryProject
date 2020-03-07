@@ -43,7 +43,7 @@
             this.GameResultsPanel.AutoScrollMargin = new System.Drawing.Size(0, 2);
             this.GameResultsPanel.BackColor = System.Drawing.Color.Transparent;
             this.GameResultsPanel.Location = new System.Drawing.Point(24, 144);
-            this.GameResultsPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.GameResultsPanel.Margin = new System.Windows.Forms.Padding(6);
             this.GameResultsPanel.Name = "GameResultsPanel";
             this.GameResultsPanel.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
             this.GameResultsPanel.Size = new System.Drawing.Size(878, 669);
@@ -59,7 +59,7 @@
             this.GameNameSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GameNameSearchBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.GameNameSearchBox.Location = new System.Drawing.Point(0, 77);
-            this.GameNameSearchBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.GameNameSearchBox.Margin = new System.Windows.Forms.Padding(6);
             this.GameNameSearchBox.Name = "GameNameSearchBox";
             this.GameNameSearchBox.Size = new System.Drawing.Size(1548, 44);
             this.GameNameSearchBox.TabIndex = 5;
@@ -74,7 +74,7 @@
             this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.SearchButton.Location = new System.Drawing.Point(914, 708);
-            this.SearchButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(6);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(662, 106);
             this.SearchButton.TabIndex = 5;
@@ -100,7 +100,7 @@
             "Genre2",
             "Genre3"});
             this.GenreCheckList.Location = new System.Drawing.Point(914, 144);
-            this.GenreCheckList.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.GenreCheckList.Margin = new System.Windows.Forms.Padding(6);
             this.GenreCheckList.MultiColumn = true;
             this.GenreCheckList.Name = "GenreCheckList";
             this.GenreCheckList.Size = new System.Drawing.Size(678, 144);
@@ -117,10 +117,14 @@
             "Price ($-$$$)",
             "Price ($$$-$)",
             "Publish Date (Old - New)",
-            "Publish Date (New - Old)"});
+            "Publish Date (New - Old)",
+            "Most Liked",
+            "Least Liked",
+            "Most Popular",
+            "Least Popular"});
             this.FilterBox.Location = new System.Drawing.Point(914, 390);
             this.FilterBox.Name = "FilterBox";
-            this.FilterBox.Size = new System.Drawing.Size(662, 33);
+            this.FilterBox.Size = new System.Drawing.Size(441, 33);
             this.FilterBox.TabIndex = 7;
             // 
             // BrowseStore
@@ -134,7 +138,7 @@
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.GameNameSearchBox);
             this.Controls.Add(this.GameResultsPanel);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "BrowseStore";
             this.Text = "BrowseStore";
             this.ResumeLayout(false);
