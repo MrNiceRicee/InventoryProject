@@ -99,6 +99,7 @@ namespace InventoryProject
             InitializeComponent();
             //generatesGames(10);
             this.FormClosed += our_FormClosed;
+            //generatesGames(100);
         }
 
         private void our_FormClosed(object sender, FormClosedEventArgs e)

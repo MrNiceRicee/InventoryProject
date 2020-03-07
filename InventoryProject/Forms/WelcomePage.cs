@@ -42,6 +42,7 @@ namespace InventoryProject.Forms
             this.FormClosed += our_FormClosed;
             this.InCartLabel.Text = "(" + InCart.Count + ") Cart";
             //updatePage();
+
         }
 
         public void updatePage()
@@ -65,6 +66,10 @@ namespace InventoryProject.Forms
             FAM.FromGameFile(FAM.FindUserLocation(LoggedIn.UserName) + "\\uGameLibrary.txt",LoggedIn.gameLibrary);
             this.WelcomeLabel.Text = "Welcome back, " + LoggedIn.IGName;
             this.UserFunds.Text = string.Format("{0:C}",(LoggedIn.Funds));
+
+            BrowseStore store = new BrowseStore();
+            store.setItems(StoreLibrary, LoggedIn, InCart);
+            store.Show();
         }
 
         private void MostPopularPanelFill(Panel panelstore, List<Game> gamelibrary)
@@ -103,7 +108,7 @@ namespace InventoryProject.Forms
                 Label gameRating = new Label();
                 Label gameSold = new Label();
                 Label gamePrice = new Label();
-
+                //Label gameGenre = new Label();
 
                 //make the labels
                 gameFrame.Size = new Size(parentPanel.Size.Width - edgepad, panelheight);                          //length of the entire panel, and then the height
@@ -133,7 +138,7 @@ namespace InventoryProject.Forms
                 gameTitle.MouseLeave += Label_MouseLeave;
 
 
-                gameStudio.Text = gamelibrary[i].Studio;
+                gameStudio.Text = gamelibrary[i].Studio+"\n"+gamelibrary[i].Genre;
                 gameStudio.AutoSize = true;
                 gameFrame.Controls.Add(gameStudio);
                 //add it in so the size resizes
@@ -279,7 +284,7 @@ namespace InventoryProject.Forms
 
         private void BrowseStore_DoubleClick(object sender, EventArgs e)
         {
-            Console.WriteLine("Double Click Store");
+            Console.WriteLine("WelcomePage. Double Click Store");
 
         }
 
@@ -291,7 +296,7 @@ namespace InventoryProject.Forms
             if (sender is Panel)
             {
                 Panel suspect = (Panel)sender;
-                Console.WriteLine(suspect.Name);
+                //Console.WriteLine(suspect.Name);
                 if (Int32.TryParse(suspect.Name,out int x))     
                 {
                     //USER HAS CLICKED ON A GAME PANEL
@@ -301,12 +306,12 @@ namespace InventoryProject.Forms
                     {
                         Application.OpenForms.OfType<GamePage>().First().Close();
                     }
-                    GamePage gamePage = new GamePage(StoreLibrary[x], LoggedIn,this);
+                    GamePage gamePage = new GamePage(StoreLibrary[x], LoggedIn,this,InCart);
                     gamePage.Show();
                 }
                 else
                 {
-                    Console.WriteLine("Other label");
+                    Console.WriteLine("WelcomePage.  Other label");
                 }
             }else if (sender is Label)
             {
@@ -323,7 +328,7 @@ namespace InventoryProject.Forms
                     //Going to add money
                     string answer = Microsoft.VisualBasic.Interaction.InputBox("Enter how much money you would like to add",
                        "Adding Funds",
-                       "Default",
+                       "0.00",
                        MousePosition.X,
                        MousePosition.Y);
                     double addedmoney = 0;
@@ -333,7 +338,7 @@ namespace InventoryProject.Forms
                     }
                     catch
                     {
-                        Console.WriteLine("Some error");
+                        Console.WriteLine("WelcomePage. Some error");
                     }
                     LoggedIn.Funds += addedmoney;
                     this.UserFunds.Text = string.Format("{0:C}", (LoggedIn.Funds));
@@ -377,6 +382,11 @@ namespace InventoryProject.Forms
                 suspect.BackColor = Color.FromArgb(10, 18, 29);
 
             }
+        }
+
+        private void Form_Focused(object sender, EventArgs e)
+        {
+            updatePage();
         }
     }
 }

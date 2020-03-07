@@ -19,7 +19,7 @@ namespace InventoryProject.Forms
         Form parentForm;
         FileAccessModule FAM = new FileAccessModule();
         List<Game> PersonalLibrary;
-        List<Game> InCart;
+        //List<Game> InCart;
         Boolean CloseUp = true;
 
         private void initiatePage()
@@ -40,21 +40,16 @@ namespace InventoryProject.Forms
             initiatePage();
         }
 
-        internal void addCart(Game game)
-        {
-            InCart.Add(game);
-        }
-
         internal Boolean checkCart(Game game)
         {
-            return (InCart.Contains(game));
+            return (PersonalLibrary.Contains(game));
         }
 
         internal UserProfile(Form parent, List <Game> inCart)
         {
             InitializeComponent();
             parentForm = parent;
-            InCart = inCart;
+            //InCart = inCart;
             this.FormClosed += our_FormClosed;
         }
 
@@ -213,7 +208,7 @@ namespace InventoryProject.Forms
                 {
                     //It's a game label, since its a number
                     //Console.WriteLine(PersonalLibrary[x].myInfo());
-                    GamePage newPage = new GamePage(PersonalLibrary[x], LoggedIn,this);
+                    GamePage newPage = new GamePage(PersonalLibrary[x], LoggedIn,this,null);
 
                     //newPage.beOwned();      //game is owned by someone
 

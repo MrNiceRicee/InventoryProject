@@ -214,10 +214,10 @@ namespace InventoryProject.Forms
                 Button suspect = (Button)sender;
                 if (suspect.Name.Equals(this.GameBuyButton.Name))
                 {
-                    DialogResult result = MessageBox.Show("Do you wanna do something?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show("Buy " + checkout.Count +" games?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
-                        Console.WriteLine("Yes");
+                        Console.WriteLine("GameCart. Yes");
 
                         //LINQ testing
                         double total = checkout.Sum(a => a.Price);
@@ -235,20 +235,19 @@ namespace InventoryProject.Forms
                             GamePanels(this.InCartPanel,checkout);
                             FileAccessModule FAM = new FileAccessModule();
                             FAM.saveUser(loggedBuyer);
-                            if (parentForm is WelcomePage)
-                            {
-                                WelcomePage parentalsuspect = (WelcomePage)parentForm;
-                                parentalsuspect.updatePage();
-                            }
+                            updatePage();
+                        }else
+                        {
+
                         }
                     }
                     else if (result == DialogResult.No)
                     {
-                        Console.WriteLine("No");
+                        Console.WriteLine("GameCart. No");
                     }
                     else if (result == DialogResult.Cancel)
                     {
-                        Console.WriteLine("Cancelled");
+                        Console.WriteLine("GameCart. Cancelled");
                     }
                 }
             }

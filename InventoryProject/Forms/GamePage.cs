@@ -17,22 +17,30 @@ namespace InventoryProject.Forms
         Game RegisteredGame;
         User LoggedUser;
         Form parentForm;
+        List<Game> GameCart;
         RandomizeGame RG = new RandomizeGame();
         FileAccessModule FAM = new FileAccessModule();
         Boolean Owned = false;
 
 
                 //set up the form
-        internal GamePage(Game freshgame, User logged, Form ParentForm)
+        internal GamePage(Game freshgame, User logged, Form ParentForm, List<Game> gameCart)
         {
             InitializeComponent();
             RegisteredGame = freshgame;
             LoggedUser = logged;
             parentForm = ParentForm;
+            GameCart = gameCart;
             //if (LoggedUser.gameLibrary.Contains(freshgame))
-            if (LoggedUser.gameLibrary.Any(a => a.saveInfo().Equals(freshgame.saveInfo())))
+            //if (LoggedUser.gameLibrary.Any(a => a.saveInfo().Equals(freshgame.saveInfo())))
+            if (LoggedUser.gameLibrary.Any(a => a.Name.Equals(freshgame.Name))
+                &&
+                LoggedUser.gameLibrary.Any(a=> a.Studio.Equals(freshgame.Studio))
+                &&
+                LoggedUser.gameLibrary.Any(a=> a.DatePublished.Equals(freshgame.DatePublished))
+                ) 
             {
-                Console.WriteLine("Owned Game!");
+                Console.WriteLine("GamePage. Owned Game!");
                 this.Owned = true;
             }
             initiateGamePage();
@@ -107,22 +115,17 @@ namespace InventoryProject.Forms
                 Button suspect = (Button)sender;
                 if (suspect.Name.Equals(this.GameBuyButton.Name))
                 {
-                    if (parentForm is WelcomePage)
+                    if (Owned)
                     {
-                        WelcomePage ChangeForm = (WelcomePage)parentForm;
-                        if (!ChangeForm.InCart.Contains(RegisteredGame))
-                        {
-                            Console.WriteLine("Add to Cart");
-                            ChangeForm.InCart.Add(RegisteredGame);
-                            ChangeForm.updatePage();
-                        }
-                    }else if (parentForm is UserProfile)
+                        Console.WriteLine("GamePage. Player Played Game");
+                    }
+                    else
                     {
-                        UserProfile ChangeForm = (UserProfile)parentForm;       //Play game
-                        if (!ChangeForm.checkCart(RegisteredGame))
+                        Console.WriteLine("GamePage. Player does not own game.");
+                        if (!GameCart.Contains(RegisteredGame))
                         {
-                            Console.WriteLine("User Played game");
-
+                            Console.WriteLine("GamePage. Game is not in Cart. Adding to Cart");
+                            GameCart.Add(RegisteredGame);
                         }
                     }
                 }

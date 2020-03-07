@@ -163,7 +163,7 @@ namespace InventoryProject.Classes
                     String allgames = "";
                     for (int i = 0; i < newuser.gameLibrary.Count; i++)
                     {
-                        allgames += GameList[i].saveInfo() + "\n";
+                        allgames += newuser.gameLibrary[i].saveInfo() + "\n";
                     }
                     Byte[] gameinfo = new UTF8Encoding(true).GetBytes(allgames);      //make the string to bytes
                     fs.Write(gameinfo, 0, gameinfo.Length);                                       //make the thing
