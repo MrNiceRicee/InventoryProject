@@ -53,3 +53,4 @@ D:\Users\Joshua\Documents\School\GCU\2020-spring\Enterprise Applications\Resposi
 D:\Users\Joshua\Documents\School\GCU\2020-spring\Enterprise Applications\Respository\InventoryProject\InventoryProject\bin\Debug\InventoryProject.exe
 D:\Users\Joshua\Documents\School\GCU\2020-spring\Enterprise Applications\Respository\InventoryProject\InventoryProject\bin\Debug\InventoryProject.pdb
 D:\Users\Joshua\Documents\School\GCU\2020-spring\Enterprise Applications\Respository\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.BrowseStore.resources
+C:\Users\konzs\Documents\School\GCU\2020 Spring\Enterprise Applications Programming 1\Repository\InventoryProject\InventoryProject\InventoryProject\obj\Debug\InventoryProject.Forms.BrowseStore.resources

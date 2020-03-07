@@ -67,9 +67,7 @@ namespace InventoryProject.Forms
             this.WelcomeLabel.Text = "Welcome back, " + LoggedIn.IGName;
             this.UserFunds.Text = string.Format("{0:C}",(LoggedIn.Funds));
 
-            BrowseStore store = new BrowseStore();
-            store.setItems(StoreLibrary, LoggedIn, InCart);
-            store.Show();
+
         }
 
         private void MostPopularPanelFill(Panel panelstore, List<Game> gamelibrary)
@@ -284,8 +282,13 @@ namespace InventoryProject.Forms
 
         private void BrowseStore_DoubleClick(object sender, EventArgs e)
         {
-            Console.WriteLine("WelcomePage. Double Click Store");
-
+            if (Application.OpenForms.OfType<BrowseStore>().Count() > 0)
+            {
+                Application.OpenForms.OfType<BrowseStore>().First().Close();
+            }
+            BrowseStore store = new BrowseStore();
+            store.setItems(StoreLibrary, LoggedIn, InCart);
+            store.Show();
         }
 
 
