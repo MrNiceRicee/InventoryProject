@@ -22,7 +22,7 @@ namespace InventoryProject
     {
         User loggedIn;
         WelcomePage Welcomepage;
-        Boolean CloseUp = true;
+        Boolean CloseUp = true;         
 
 
         public void wait(int milliseconds)

@@ -18,6 +18,9 @@ namespace InventoryProject.Forms
     {
         FileAccessModule FAM = new FileAccessModule();
         Boolean CloseUp = true;
+        int IGNLength = 5;
+        int UsernameLength = 5;
+        int PasswordLength = 5;
         public void wait(int milliseconds)
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
@@ -64,15 +67,16 @@ namespace InventoryProject.Forms
 
             Label userwarning = this.UserWarning;
             Label passwarning = this.PasswordWarning;
-            if (ign.Length >= 8) {
-                if (username.Length >= 8) {
+            if (ign.Length >= IGNLength) {
+                if (username.Length >= UsernameLength) {
                     if (!FAM.checkUsernameExist(username))
                     {
                         userwarning.Text = "Available";
-                        if (pass1.Length > 7)
+                        if (pass1.Length >= PasswordLength)
                         {
                             if (pass1.Equals(pass2))
                             {
+                                Console.WriteLine("RegisterPage. Logged in");
                                 passwarning.Visible = true;
                                 passwarning.Text = "Password match";
                                 User newOne = new User(ign, username, pass1);
@@ -93,7 +97,7 @@ namespace InventoryProject.Forms
                         }else
                         {
                             passwarning.Visible = true;
-                            passwarning.Text = "At least 8 characters";
+                            passwarning.Text = "At least "+PasswordLength+" characters";
                         }
 
                     } else
@@ -128,10 +132,10 @@ namespace InventoryProject.Forms
             }
             else
             {
-                if (this.UsernameBox.TextLength < 7)
+                if (this.UsernameBox.TextLength < UsernameLength)
                 {
                     this.UserWarning.Visible = true;
-                    this.UserWarning.Text = "At least 8 characters";
+                    this.UserWarning.Text = "At least "+UsernameLength+" characters";
                 }
                 else
                 {
@@ -156,10 +160,10 @@ namespace InventoryProject.Forms
 
         private void PasswordBox_TextChanged(object sender, EventArgs e)
         {
-            if (this.PasswordBox.Text.Length < 8)
+            if (this.PasswordBox.Text.Length < PasswordLength)
             {
                 this.PasswordWarning.Visible = true;
-                this.PasswordWarning.Text = "At least 8 characters";
+                this.PasswordWarning.Text = "At least "+PasswordLength+" characters";
             }
             else if (this.PasswordBox.Text.Equals(this.PasswordConfirmBox.Text))
             {
@@ -177,10 +181,10 @@ namespace InventoryProject.Forms
                 wait(500);
                 this.IGNWarning.Visible = false;
             }
-            if (IGNBox.Text.Length < 7)
+            if (IGNBox.Text.Length < IGNLength)
             {
                 this.IGNWarning.Visible = true;
-                this.IGNWarning.Text = "At least 8 characters";
+                this.IGNWarning.Text = "At least "+IGNLength+" characters";
             }else
             {
                 this.IGNWarning.Visible = false;
