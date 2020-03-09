@@ -97,9 +97,8 @@ namespace InventoryProject
         public LoginPage()
         {
             InitializeComponent();
-            //generatesGames(10);
             this.FormClosed += our_FormClosed;
-            //generatesGames(100);
+            //generatesGames(100);          //uncomment this to generate games, by some amount you want.
         }
 
         private void our_FormClosed(object sender, FormClosedEventArgs e)

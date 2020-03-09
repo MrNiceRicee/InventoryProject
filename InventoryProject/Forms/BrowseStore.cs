@@ -241,26 +241,32 @@ namespace InventoryProject.Forms
             }
             else if (SelectedSort.Equals("Publish Date (Old - New)"))
             {
+                FinalSearchLibrary.Sort((a, b) => a.DatePublished.CompareTo(b.DatePublished));
 
             }
             else if (SelectedSort.Equals("Publish Date (New - Old)"))
             {
+                FinalSearchLibrary.Sort((a, b) => b.DatePublished.CompareTo(a.DatePublished));
 
             }
             else if (SelectedSort.Equals("Most Liked"))
             {
+                FinalSearchLibrary.Sort((a, b) => b.Ratings.CompareTo(a.Ratings));
 
             }
             else if (SelectedSort.Equals("Least Liked"))
             {
+                FinalSearchLibrary.Sort((a, b) => a.Ratings.CompareTo(b.Ratings));
 
             }
             else if (SelectedSort.Equals("Most Popular"))
             {
+                FinalSearchLibrary.Sort((a, b) => b.ItemSold.CompareTo(a.ItemSold));
 
             }
             else if (SelectedSort.Equals("Least Popular"))
             {
+                FinalSearchLibrary.Sort((a, b) => a.ItemSold.CompareTo(b.ItemSold));
 
             }
 
